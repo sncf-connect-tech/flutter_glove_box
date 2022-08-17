@@ -12,6 +12,7 @@ import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -263,29 +264,31 @@ Future<void> compareWithGolden(
   await pumpAfterPrime(tester);
 
   if (autoHeight == true) {
-    // Find the first scrollable element which can be scrolled vertical.
-    // ListView, SingleChildScrollView, CustomScrollView? are implemented using a Scrollable widget.
-    final scrollable = find
+    // Find the max extent from scrollable elements which can be scrolled vertically.
+    // ListView, SingleChildScrollView, CustomScrollView, NestedScrollView are implemented using a Scrollable widget.
+    final maxExtentAfter = find
         .byType(Scrollable)
         .evaluate()
         .map<ScrollableState?>((Element element) {
-      if (element is StatefulElement) {
-        final state = element.state;
-        if (state is ScrollableState) {
-          return state;
-        }
-      }
-      return null;
-    }).firstWhere((state) {
-      final position = state?.position;
-      return position?.axisDirection == AxisDirection.down;
-    }, orElse: () => null);
+          if (element is StatefulElement) {
+            final state = element.state;
+            if (state is ScrollableState) {
+              return state;
+            }
+          }
+          return null;
+        })
+        .whereNotNull()
+        .where((state) => state.position.axisDirection == AxisDirection.down)
+        .map((state) => state.position.extentAfter)
+        .where((extent) => extent.isFinite)
+        .fold<double>(0, math.max);
 
     final renderObject = tester.renderObject(actualFinder);
 
     var finalHeight = originalWindowSize.height;
-    if (scrollable != null && scrollable.position.extentAfter.isFinite) {
-      finalHeight = originalWindowSize.height + scrollable.position.extentAfter;
+    if (maxExtentAfter > 0) {
+      finalHeight += maxExtentAfter;
     } else if (renderObject is RenderBox) {
       finalHeight = renderObject.size.height;
     }
