@@ -1,6 +1,12 @@
 .DS_Store
 .dart_tool/
 
+.iml
+.idea
+
+pubspec.lock
+example/pubspec.lock
+
 .packages
 .pub/
 packages/golden_toolkit/.idea/
@@ -12,3 +18,6 @@ ios/Runner/GeneratedPluginRegistrant.*
 
 # don't check in golden failure output
 **/failures/*.png
+
+# FVM Version Cache
+.fvm/
