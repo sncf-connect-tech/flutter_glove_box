@@ -3,9 +3,12 @@
 
 .packages
 .pub/
-.idea/
+packages/golden_toolkit/.idea/
 
 build/
 ios/.generated/
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.*
+
+# don't check in golden failure output
+**/failures/*.png

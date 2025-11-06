@@ -1,10 +1,28 @@
-# This only exists so that we can include pedantic in the top level
-# analysis_options.yaml. Each plugin should be published from its own
-# subdirectory underneath packages/.
-name: flutter_glove_box
-dev_dependencies:
-  pedantic: ^1.9.0
-publish_to: none
+name: golden_toolkit
+description: Common patterns for screenshot-based widget testing using Goldens.
+version: 0.15.0
+homepage: https://github.com/sncf-connect-tech/flutter_glove_box/
+repository: https://github.com/sncf-connect-tech/flutter_glove_box/tree/master
+issue_tracker: https://github.com/sncf-connect-tech/flutter_glove_box/issues
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.18.4 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  meta: ^1.8.0
+
+dev_dependencies:
+  flutter_lints: ^2.0.1
+  sample_dependency:
+    path: test/sample_dependency
+  test_api: ^0.4.12
+
+flutter:
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf

@@ -9,14 +9,20 @@
       <excludeFolder url="file://$MODULE_DIR$/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/given_when_then/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/given_when_then/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/given_when_then/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/golden_toolkit/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/golden_toolkit/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/golden_toolkit/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/page_object/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/page_object/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/page_object/build" />
       <excludeFolder url="file://$MODULE_DIR$/test/sample_dependency/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/test/sample_dependency/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/test/sample_dependency/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Dart SDK" level="project" />
-    <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>
