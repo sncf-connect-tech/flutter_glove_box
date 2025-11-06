@@ -1,6 +1,6 @@
-# Flutter Glove Box Guidelines
+# eBay Flutter Testing Tools Guidelines
 
-Thank you so much for wanting to contribute to this project! Here are a few important things you should know about contributing:
+Thank you so much for wanting to contribute to golden_toolkit! Here are a few important things you should know about contributing:
 
   1. Changes require discussion, use cases, etc. Code comes later.
   2. Pull requests are great for small fixes for bugs, documentation, etc.
