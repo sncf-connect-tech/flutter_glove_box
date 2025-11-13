@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,12 +24,13 @@ extension WidgetFlutterBindingExtensions on TestWidgetsFlutterBinding {
   Future<void> runWithDeviceOverrides(
     Device device, {
     required Future<void> Function() body,
+    required TestFlutterView view,
   }) async {
-    await applyDeviceOverrides(device);
+    await applyDeviceOverrides(device, view: view);
     try {
       await body();
     } finally {
-      await resetDeviceOverrides();
+      await resetDeviceOverrides(view: view);
     }
   }
 
@@ -42,33 +41,33 @@ extension WidgetFlutterBindingExtensions on TestWidgetsFlutterBinding {
   ///
   /// [device] the desired configuration to apply
   ///
-  Future<void> applyDeviceOverrides(Device device) async {
+  Future<void> applyDeviceOverrides(Device device, {required TestFlutterView view}) async {
     await setSurfaceSize(Size(device.size.width, device.size.height));
-    this.window.physicalSizeTestValue = device.size * device.devicePixelRatio;
-    this.window.devicePixelRatioTestValue = device.devicePixelRatio;
-    this.window.platformDispatcher.textScaleFactorTestValue = device.textScale;
-    this.window.platformDispatcher.platformBrightnessTestValue =
+    view.physicalSize = device.size * device.devicePixelRatio;
+    view.devicePixelRatio = device.devicePixelRatio;
+    view.platformDispatcher.textScaleFactorTestValue = device.textScale;
+    view.platformDispatcher.platformBrightnessTestValue =
         device.brightness;
-    this.window.safeAreaTestValue = device.safeArea;
+    view.safeAreaTestValue = device.safeArea;
   }
 
   /// Resets any configuration that may be been specified by applyDeviceOverrides
   ///
   /// Only needs to be called if you are concerned about the result of applyDeviceOverrides bleeding over across tests.
-  Future<void> resetDeviceOverrides() async {
+  Future<void> resetDeviceOverrides({required TestFlutterView view}) async {
     // there is an untested assumption that clearing these specific values is cheaper than
     // calling binding.window.clearAllTestValues().
-    this.window.clearDevicePixelRatioTestValue();
-    this.window.platformDispatcher.clearPlatformBrightnessTestValue();
-    this.window.clearPaddingTestValue();
-    this.window.platformDispatcher.clearTextScaleFactorTestValue();
-    this.window.clearPhysicalSizeTestValue();
+    view.resetDevicePixelRatio();
+    view.platformDispatcher.clearPlatformBrightnessTestValue();
+    view.resetPadding();
+    view.platformDispatcher.clearTextScaleFactorTestValue();
+    view.resetPhysicalSize();
     await setSurfaceSize(null);
   }
 }
 
 /// Convenience extensions for configuring elements of the TestWindow
-extension TestWindowExtensions on TestWindow {
+extension TestFlutterViewExtensions on TestFlutterView {
   /// convenience wrapper for configuring the paddingTestValue
   ///
   /// paddingTestValue requires you creating your own class that implements WindowPadding
@@ -76,7 +75,7 @@ extension TestWindowExtensions on TestWindow {
   /// [safeArea] specifies the safe area insets for all 4 edges that you wish to simulate
   ///
   set safeAreaTestValue(EdgeInsets safeArea) {
-    paddingTestValue = _FakeWindowPadding(
+    padding = FakeViewPadding(
       bottom: safeArea.bottom,
       left: safeArea.left,
       right: safeArea.right,
@@ -85,23 +84,4 @@ extension TestWindowExtensions on TestWindow {
   }
 }
 
-class _FakeWindowPadding implements WindowPadding {
-  const _FakeWindowPadding({
-    this.bottom = 0,
-    this.left = 0,
-    this.right = 0,
-    this.top = 0,
-  });
 
-  @override
-  final double bottom;
-
-  @override
-  final double left;
-
-  @override
-  final double right;
-
-  @override
-  final double top;
-}

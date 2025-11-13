@@ -1,10 +1,10 @@
-/// ***************************************************
-/// Copyright 2019-2020 eBay Inc.
-///
-/// Use of this source code is governed by a BSD-style
-/// license that can be found in the LICENSE file or at
-/// https://opensource.org/licenses/BSD-3-Clause
-/// ***************************************************
+/* ***************************************************
+ * Copyright 2019-2020 eBay Inc.
+ *
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/BSD-3-Clause
+ * ***************************************************/
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -33,17 +33,18 @@ Future<void> loadAppFonts() async {
   }
 }
 
-/// There is no way to easily load the Roboto or Cupertino fonts.
-/// To make them available in tests, a package needs to include their own copies of them.
-///
-/// GoldenToolkit supplies Roboto because it is free to use.
-///
-/// However, when a downstream package includes a font, the font family will be prefixed with
-/// /packages/<package name>/<fontFamily> in order to disambiguate when multiple packages include
-/// fonts with the same name.
-///
-/// Ultimately, the font loader will load whatever we tell it, so if we see a font that looks like
-/// a Material or Cupertino font family, let's treat it as the main font family
+/* There is no way to easily load the Roboto or Cupertino fonts.
+* To make them available in tests, a package needs to include their own copies of them.
+*
+* GoldenToolkit supplies Roboto because it is free to use.
+*
+* However, when a downstream package includes a font, the font family will be prefixed with
+* /packages/<package name>/<fontFamily> in order to disambiguate when multiple packages include
+* fonts with the same name.
+*
+* Ultimately, the font loader will load whatever we tell it, so if we see a font that looks like
+* a Material or Cupertino font family, let\'s treat it as the main font family
+* ***********************************************************************************************/
 @visibleForTesting
 String derivedFontFamily(Map<String, dynamic> fontDefinition) {
   if (!fontDefinition.containsKey('family')) {

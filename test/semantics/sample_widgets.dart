@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class SampleListWidget extends StatelessWidget {
-  const SampleListWidget({Key? key}) : super(key: key);
+  const SampleListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

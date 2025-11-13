@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.16.0
+
+- Upgrade to latest Flutter stable (3.35.7 / Dart 3.9.2)
+- Clean warnings
+- Remove unused packages
+
 ## 0.15.0
 
 - BugFix: device pixel ratio will be properly taken into consideration when generating golden images. Thanks to @BenVercammen

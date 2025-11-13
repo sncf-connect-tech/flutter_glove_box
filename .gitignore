@@ -1,7 +1,7 @@
 .DS_Store
 .dart_tool/
 
-.iml
+*.iml
 .idea
 
 pubspec.lock

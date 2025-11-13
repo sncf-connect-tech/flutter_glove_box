@@ -1,10 +1,10 @@
-/// ***************************************************
-/// Copyright 2019-2020 eBay Inc.
-///
-/// Use of this source code is governed by a BSD-style
-/// license that can be found in the LICENSE file or at
-/// https://opensource.org/licenses/BSD-3-Clause
-/// ***************************************************
+/* ***************************************************
+ * Copyright 2019-2020 eBay Inc.
+ *
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/BSD-3-Clause
+ * ***************************************************/
 
 import 'dart:math';
 
@@ -181,9 +181,8 @@ class DeviceScenarioWidget extends StatelessWidget {
           final mergedMediaQuery = mediaQuery.copyWith(
             size: device.size,
             padding: device.safeArea,
-            platformBrightness: device.brightness,
+            platformBrightness: device.brightness, textScaler: TextScaler.linear(device.textScale),
             devicePixelRatio: device.devicePixelRatio,
-            textScaleFactor: device.textScale,
           );
 
           return MediaQuery(

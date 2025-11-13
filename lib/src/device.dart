@@ -5,8 +5,7 @@
 /// license that can be found in the LICENSE file or at
 /// https://opensource.org/licenses/BSD-3-Clause
 /// ***************************************************
-
-import 'dart:ui';
+library flutter_glove_box;
 
 import 'package:flutter/widgets.dart';
 

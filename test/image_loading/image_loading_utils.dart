@@ -3,8 +3,8 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 
 class ImageWidget extends StatelessWidget {
   const ImageWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ImageWidget extends StatelessWidget {
 
 @immutable
 class BoxDecorationWithImage extends StatelessWidget {
-  const BoxDecorationWithImage({Key? key}) : super(key: key);
+  const BoxDecorationWithImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,11 @@ GoldenToolkitConfiguration get defaultConfiguration =>
 @immutable
 class ListOfItemsWithOneImage extends StatelessWidget {
   const ListOfItemsWithOneImage({
-    Key? key,
+    super.key,
     required this.itemSize,
     required this.indexThatContainsImage,
     required this.cacheExtent,
-  }) : super(key: key);
+  });
 
   final Size itemSize;
   final int indexThatContainsImage;

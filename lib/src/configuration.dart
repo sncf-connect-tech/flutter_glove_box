@@ -56,7 +56,7 @@ typedef SkipGoldenAssertion = bool Function();
 /// A factory to determine an actual file name/path from a given name.
 ///
 /// See also:
-/// * [screenMatchesGolden], which uses such a factory to determine the file name passed to [matchesGoldenFile].
+/// * `[screenMatchesGolden]`, which uses such a factory to determine the file name passed to `[matchesGoldenFile]`. 
 /// * [GoldenToolkitConfiguration] to configure a global file name factory.
 typedef FileNameFactory = String Function(String name);
 
@@ -122,7 +122,7 @@ class GoldenToolkitConfiguration {
   final bool enableRealShadows;
 
   /// the tags golden test are tagged with, defaults to ['golden'],
-  /// must be null, String or Iterable<String>
+  /// must be null, String or `Iterable<String>`
   final Object? tags;
 
   /// Copies the configuration with the given values overridden.

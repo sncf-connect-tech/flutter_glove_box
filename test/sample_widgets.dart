@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WidgetWithShadows extends StatelessWidget {
-  const WidgetWithShadows({Key? key}) : super(key: key);
+  const WidgetWithShadows({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class WidgetWithShadows extends StatelessWidget {
             BoxShadow(
               offset: const Offset(10, 10),
               blurRadius: 16,
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withAlpha((255 * 0.3).round()),
             )
           ],
         ),

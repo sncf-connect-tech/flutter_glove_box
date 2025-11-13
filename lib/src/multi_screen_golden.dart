@@ -1,10 +1,10 @@
-/// ***************************************************
-/// Copyright 2019-2020 eBay Inc.
-///
-/// Use of this source code is governed by a BSD-style
-/// license that can be found in the LICENSE file or at
-/// https://opensource.org/licenses/BSD-3-Clause
-/// ***************************************************
+/* ***************************************************
+ * Copyright 2019-2020 eBay Inc.
+ *
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/BSD-3-Clause
+ * ***************************************************/
 
 //ignore_for_file: deprecated_member_use_from_same_package
 
@@ -64,6 +64,7 @@ Future<void> multiScreenGolden(
   for (final device in devices ?? GoldenToolkit.configuration.defaultDevices) {
     await tester.binding.runWithDeviceOverrides(
       device,
+      view: tester.view,
       body: () async {
         if (overrideGoldenHeight != null) {
           await tester.binding

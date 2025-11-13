@@ -1,10 +1,10 @@
-/// ***************************************************
-/// Copyright 2019-2020 eBay Inc.
-///
-/// Use of this source code is governed by a BSD-style
-/// license that can be found in the LICENSE file or at
-/// https://opensource.org/licenses/BSD-3-Clause
-/// ***************************************************
+/* ***************************************************
+ * Copyright 2019-2020 eBay Inc.
+ *
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/BSD-3-Clause
+ * ***************************************************/
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -67,12 +67,11 @@ Future<void> main() async {
       });
 
       testGoldens('Should restore window binding settings', (tester) async {
-        final size = tester.binding.createViewConfiguration().size;
-        final initialSize = tester.binding.window.physicalSize;
-        final initialBrightness = tester.binding.window.platformBrightness;
-        final initialDevicePixelRatio = tester.binding.window.devicePixelRatio;
-        final initialTextScaleFactor = tester.binding.window.textScaleFactor;
-        final initialViewInsets = tester.binding.window.padding;
+        final initialSize = tester.view.physicalSize;
+        final initialBrightness = tester.platformDispatcher.platformBrightness;
+        final initialDevicePixelRatio = tester.view.devicePixelRatio;
+        final initialTextScaleFactor = tester.platformDispatcher.textScaleFactor;
+        final initialViewInsets = tester.view.padding;
 
         await tester.pumpWidgetBuilder(Container());
         await multiScreenGolden(
@@ -90,22 +89,24 @@ Future<void> main() async {
           ],
         );
 
-        expect(tester.binding.createViewConfiguration().size, equals(size));
-        expect(tester.binding.window.physicalSize, equals(initialSize));
-        expect(tester.binding.window.platformBrightness,
+        expect(tester.view.physicalSize, equals(initialSize));
+        expect(tester.platformDispatcher.platformBrightness,
             equals(initialBrightness));
-        expect(tester.binding.window.devicePixelRatio,
+        expect(tester.view.devicePixelRatio,
             equals(initialDevicePixelRatio));
-        expect(tester.binding.window.textScaleFactor,
+        expect(tester.platformDispatcher.textScaleFactor,
             equals(initialTextScaleFactor));
-        expect(tester.binding.window.padding, equals(initialViewInsets));
+        expect(tester.view.padding.top, equals(initialViewInsets.top));
+        expect(tester.view.padding.bottom, equals(initialViewInsets.bottom));
+        expect(tester.view.padding.left, equals(initialViewInsets.left));
+        expect(tester.view.padding.right, equals(initialViewInsets.right));
       });
 
       testGoldens('Maintain physical size in pumped widget', (tester) async {
         bool firstPump = true;
         const defaultSize = Size(800, 600);
         const desiredSize = Size(50, 75);
-        await tester.pumpWidgetBuilder(StreamBuilder(builder: (context, _) {
+        await tester.pumpWidgetBuilder(StreamBuilder(stream: null, builder: (context, _) {
           if (firstPump) {
             expect(MediaQuery
                 .of(context)
