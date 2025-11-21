@@ -201,10 +201,10 @@ Widget _forecastWithDifferentImagesForLargeAndSmallScreen() {
 
 class FutureWidgetTester extends StatefulWidget {
   const FutureWidgetTester({
-    Key? key,
+    super.key,
     required this.child,
     this.duration = const Duration(milliseconds: 100),
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Duration duration;
@@ -235,8 +235,7 @@ class _FutureWidgetTesterState extends State<FutureWidgetTester> {
 }
 
 class InvalidateWidgetTreeWhenSizeChanges extends StatelessWidget {
-  const InvalidateWidgetTreeWhenSizeChanges({Key? key, required this.child})
-      : super(key: key);
+  const InvalidateWidgetTreeWhenSizeChanges({super.key, required this.child});
   final Widget child;
 
   @override

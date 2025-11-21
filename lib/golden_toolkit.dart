@@ -5,8 +5,6 @@
 /// license that can be found in the LICENSE file or at
 /// https://opensource.org/licenses/BSD-3-Clause
 /// ***************************************************
-library golden_toolkit;
-
 export 'src/configuration.dart';
 export 'src/device.dart';
 export 'src/device_builder.dart';

@@ -2,23 +2,20 @@ import 'package:flutter/material.dart';
 
 /// Counter page from flutters default generated app
 class FlutterDemoPage extends StatelessWidget {
-  const FlutterDemoPage({Key? key}) : super(key: key);
+  const FlutterDemoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, visualDensity: VisualDensity.adaptivePlatformDensity),
       home: const _MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class _MyHomePage extends StatefulWidget {
-  const _MyHomePage({Key? key, required this.title}) : super(key: key);
+  const _MyHomePage({required this.title});
 
   final String title;
 
@@ -38,21 +35,14 @@ class _MyHomePageState extends State<_MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Icon(Icons.flutter_dash),
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            const Text('You have pushed the button this many times:'),
+            Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
           ],
         ),
       ),

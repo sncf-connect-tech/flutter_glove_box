@@ -7,7 +7,7 @@ issue_tracker: https://github.com/sncf-connect-tech/flutter_glove_box/issues
 publish_to:
 
 environment:
-  sdk: ">=2.18.4 <4.0.0"
+  sdk: ^3.7.2
   flutter: ^3.29.3
 
 dependencies:
@@ -19,10 +19,10 @@ dependencies:
   collection: ^1.19.1
 
 dev_dependencies:
-  flutter_lints: ^6.0.0
+  flutter_lints: ^5.0.0
   sample_dependency:
     path: test/sample_dependency
-  test_api: ^0.7.6
+  test_api: ^0.7.4
 
 flutter:
   fonts:

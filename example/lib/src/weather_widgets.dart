@@ -15,9 +15,8 @@ import 'package:flutter/material.dart';
 /// refactor and clean it up!
 
 class WeatherForecast extends StatelessWidget {
-  const WeatherForecast({Key? key, List<Forecast> list = thisWeek})
-      : _list = list,
-        super(key: key);
+  const WeatherForecast({super.key, List<Forecast> list = thisWeek})
+      : _list = list;
 
   final List<Forecast> _list;
 
@@ -86,9 +85,9 @@ class WeatherForecast extends StatelessWidget {
 
 class WeeklyForecastExpanded extends StatelessWidget {
   const WeeklyForecastExpanded({
-    Key? key,
+    super.key,
     required this.forecasts,
-  }) : super(key: key);
+  });
 
   final List<Forecast> forecasts;
 
@@ -120,9 +119,9 @@ class WeeklyForecastExpanded extends StatelessWidget {
 
 class WeeklyForecastCompact extends StatelessWidget {
   const WeeklyForecastCompact({
-    Key? key,
+    super.key,
     required this.forecasts,
-  }) : super(key: key);
+  });
 
   final List<Forecast> forecasts;
 
@@ -148,11 +147,11 @@ class WeeklyForecastCompact extends StatelessWidget {
 
 class WeatherCard extends StatelessWidget {
   const WeatherCard({
-    Key? key,
+    super.key,
     required this.temp,
     required this.weather,
     this.day = 'Friday',
-  }) : super(key: key);
+  });
 
   factory WeatherCard.forecast(Forecast forecast) {
     return WeatherCard(

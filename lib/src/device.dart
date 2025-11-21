@@ -5,8 +5,7 @@
 /// license that can be found in the LICENSE file or at
 /// https://opensource.org/licenses/BSD-3-Clause
 /// ***************************************************
-library flutter_glove_box;
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 /// This [Device] is a configuration for golden test. Can be provided for [multiScreenGolden]
@@ -33,12 +32,10 @@ class Device {
   );
 
   /// [tabletLandscape] example of tablet that in landscape mode
-  static const Device tabletLandscape =
-      Device(name: 'tablet_landscape', size: Size(1366, 1024));
+  static const Device tabletLandscape = Device(name: 'tablet_landscape', size: Size(1366, 1024));
 
   /// [tabletPortrait] example of tablet that in portrait mode
-  static const Device tabletPortrait =
-      Device(name: 'tablet_portrait', size: Size(1024, 1366));
+  static const Device tabletPortrait = Device(name: 'tablet_portrait', size: Size(1024, 1366));
 
   /// [name] specify device name. Ex: Phone, Tablet, Watch
 

@@ -6,6 +6,7 @@
  * https://opensource.org/licenses/BSD-3-Clause
  * ***************************************************/
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
